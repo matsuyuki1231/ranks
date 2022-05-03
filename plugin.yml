@@ -1,0 +1,41 @@
+name: ranks
+main: matsuyuki\ranks\rank
+api: 4.0.0
+version: 1.0.0
+author: matsuyuki
+description: 称号を変えるプラグイン。ショップも作れます。
+permissions:
+  ranks.mkrankshop:
+    description: この権限を持っている人は、称号ショップを作成・削除することができる
+    default: op
+  ranks.mkoriginalrank:
+    description: この権限を持っている人は、economyAPIのmoneyを使用して自分の称号を作ることができる
+    default: true
+  ranks.changerank:
+    description: この権限を持っている人は、称号履歴を用いて称号を変更することができる
+    default: true
+  ranks.usemenuform:
+    description: この権限を持っている人は、メニュー画面を使うことができる(各機能を使う際はそれぞれの権限が必要)
+    default: true
+  ranks.changecost:
+    description: この権限を持っている人は、称号の作成にかかる費用を変えることができる
+    default: op
+commands:
+  mkrank:
+    description: オリジナルの称号を作成します
+    usage: "/mkrank"
+    permission: ranks.mkoriginalrank
+  chgrank:
+    description: 称号を変更します
+    usage: "/chgrank"
+    permission: ranks.changerank
+  rank:
+    description: 称号のメニュー画面を開きます
+    usage: "/rank"
+    permission: ranks.usemenuform
+  chgrankcost:
+    description: 称号の新規作成にかかる費用を変えます
+    usage: "/chgrankcost <費用(半角数字)>"
+    permission: ranks.changecost
+depend:
+  - EconomyAPI
