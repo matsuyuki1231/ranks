@@ -9,6 +9,13 @@ use matsuyuki\ranks\rank;
 use onebone\economyapi\EconomyAPI;
 
 class newrankform implements Form {
+    private rank $rank;
+    private Player $player;
+    private string $playername;
+    private Config $cfrank;
+    private Config $cfconfig;
+    private string $err;
+    private string $default;
     
     public function __construct(Player $player, rank $rank, string $err = "", string $default = "") {
 

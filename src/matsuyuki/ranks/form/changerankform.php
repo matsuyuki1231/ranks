@@ -8,6 +8,11 @@ use pocketmine\form\Form;
 use matsuyuki\ranks\rank;
 
 class changerankform implements Form {
+    private rank $rank;
+    private Player $player;
+    private string $playername;
+    private Config $cfrank;
+    private string $err;
     
     public function __construct(Player $player, rank $rank, string $err = "") {
 

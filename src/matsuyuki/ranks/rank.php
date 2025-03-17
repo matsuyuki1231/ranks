@@ -2,6 +2,7 @@
 
 namespace matsuyuki\ranks; 
 
+use pocketmine\block\BaseSign;
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener; 
 use pocketmine\command\Command;
@@ -18,7 +19,11 @@ use matsuyuki\ranks\form\changerankform;
 use matsuyuki\ranks\form\menuform;
 use matsuyuki\ranks\form\newrankform;
 
-class rank extends PluginBase implements Listener { 
+class rank extends PluginBase implements Listener {
+    private Config $cfrank;
+    private Config $cfconfig;
+    private Config $cfshop;
+    private array $confirm;
 
    public function onEnable():void {
 
@@ -108,7 +113,7 @@ class rank extends PluginBase implements Listener {
    public function onTap(PlayerInteractEvent $event):void {
 
       $block = $event->getBlock();
-      if ($block->getId() != 63 && $block->getId() != 68) { //タップしたブロックが看板じゃないなら返す
+      if (!$block instanceof BaseSign) { //タップしたブロックが看板じゃないなら返す
          return;
       }
       $player = $event->getPlayer();
@@ -165,7 +170,7 @@ class rank extends PluginBase implements Listener {
    public function onBreak(BlockBreakEvent $event):void {
 
       $block = $event->getBlock();
-      if ($block->getId() != 63 && $block->getId() != 68) { //タップしたブロックが看板じゃないなら返す
+      if (!$block instanceof BaseSign) { //タップしたブロックが看板じゃないなら返す
          return;
       }
       $player = $event->getPlayer();
@@ -265,7 +270,7 @@ class rank extends PluginBase implements Listener {
             return true;
 
       }
-      
+      return false;
 
    }
 
